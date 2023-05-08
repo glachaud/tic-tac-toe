@@ -25,7 +25,22 @@ public class InputParser {
         return val;
     }
 
+    public String getString(String pattern){
+        while(!sc.hasNext(pattern)){
+            System.out.println("Wrong input. Try again!");
+            sc.nextLine();
+        }
+        return sc.next(pattern);
+    }
+
     public void closeScanner(){
         sc.close();
+    }
+
+    public static void main(String[] args) {
+        InputParser inputParser = new InputParser(System.in);
+        System.out.println("Enter a name");
+        String answer = inputParser.getString("\\w+");
+        System.out.printf("Your answer is: %s%n", answer);
     }
 }

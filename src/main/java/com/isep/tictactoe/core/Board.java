@@ -1,7 +1,7 @@
 package com.isep.tictactoe.core;
 
 public class Board {
-    private int[][] board;
+    private final int[][] board;
     public static final int BOARD_SIZE = 3;
 
     public Board() {
@@ -88,6 +88,20 @@ public class Board {
 
     public int getSquare(int row, int column) {
         return board[row][column];
+    }
+
+    public void printBoard(){
+        for (int i = 0; i < Board.BOARD_SIZE; i++) {
+            for (int j = 0; j < Board.BOARD_SIZE; j++) {
+                int squareColor = this.getSquare(i, j);
+                if(squareColor == 0){
+                    System.out.print("| ");
+                } else {
+                    System.out.printf("|%s", Symbol.getSymbol(squareColor).symbol);
+                }
+            }
+            System.out.println("|");
+        }
     }
 
     public static void main(String[] args) {
