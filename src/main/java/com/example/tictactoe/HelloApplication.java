@@ -11,6 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class HelloApplication extends Application {
 
@@ -33,6 +34,13 @@ public class HelloApplication extends Application {
     public void declareWinner(int player) {
         VBox root = new VBox();
         Label label = new Label(String.format("Player %d has won the game! Congratulations!", player));
+        label.getStyleClass().add("label");
+        root.getStyleClass().add("vbox");
+        root.getStylesheets().add(
+            Objects.requireNonNull(
+                getClass().getResource("style.css"))
+                .toExternalForm()
+        );
         root.getChildren().add(label);
         Scene scene = new Scene(root, 600, 600);
         this.stage.setTitle("End!");
